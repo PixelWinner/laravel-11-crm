@@ -1,0 +1,28 @@
+.sidebar {
+    padding: 16px;
+    height: 100%;
+    min-width: 160px;
+    border-right: 1px solid gray;
+    background: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nav-links li {
+    list-style: none
+}
+
+.nav-links a,
+.nav-links a:visited {
+    color: black;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    text-decoration: underline;
+}

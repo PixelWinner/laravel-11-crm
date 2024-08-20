@@ -1,0 +1,50 @@
+.filter-section {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 16px;
+}
+
+.filter-section label {
+    font-weight: bold;
+}
+
+.filter-section input, .filter-section select {
+    padding: 5px;
+    font-size: 16px;
+}
+
+.product-cards {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    flex-wrap: wrap;
+    gap: 16px;
+    width: 100%;
+    margin: 16px 0;
+    overflow: auto;
+}
+
+.product-card {
+    width: 240px;
+    overflow: auto;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.product-card h2 {
+    margin-bottom: 10px;
+    font-size: 20px;
+    color: #333;
+}
+
+.product-card p {
+    margin-bottom: 10px;
+    color: #666;
+}

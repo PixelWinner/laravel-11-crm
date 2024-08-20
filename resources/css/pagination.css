@@ -1,0 +1,15 @@
+.pagination-links {
+    margin-top: 8px;
+}
+
+.pagination-links > nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pagination-links p,
+.pagination-links svg {
+    display: none;
+}
