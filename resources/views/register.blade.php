@@ -5,7 +5,7 @@
         <h1>Регистрация</h1>
         <form class="paper-form" action="{{ route('register') }}" method="POST">
             @csrf
-            <div>
+            <div class="form-group">
                 <label for="name">Имя:</label>
                 <input type="text" id="name" name="name" value="{{ old('name') }}" required>
                 @if ($errors->has('name'))
@@ -14,7 +14,8 @@
                     </div>
                 @endif
             </div>
-            <div>
+
+            <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                 @if ($errors->has('email'))
@@ -23,7 +24,8 @@
                     </div>
                 @endif
             </div>
-            <div>
+
+            <div class="form-group">
                 <label for="password">Пароль:</label>
                 <input type="password" id="password" name="password" required>
                 @if ($errors->has('password'))
@@ -32,7 +34,8 @@
                     </div>
                 @endif
             </div>
-            <div>
+
+            <div class="form-group">
                 <label for="password_confirmation">Подтвердите пароль:</label>
                 <input type="password" id="password_confirmation" name="password_confirmation" required>
                 @if ($errors->has('password_confirmation'))

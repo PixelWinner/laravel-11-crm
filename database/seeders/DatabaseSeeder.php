@@ -47,8 +47,8 @@ class DatabaseSeeder extends Seeder
         ]);
         $client->assignRole(User::CLIENT);
 
-        Category::factory()->count(5)->create()->each(function ($category) {
-            Product::factory()->count(10)->create(['category_id' => $category->id]);
+        Category::factory()->count(2)->create()->each(function ($category) {
+            Product::factory()->count(5)->create(['category_id' => $category->id]);
         });
     }
 }

@@ -10,9 +10,9 @@
                 <label for="category">Категория:</label>
                 <select name="category" id="category">
                     <option value="">Все категории</option>
+                    <option value="none" {{ request('category') == 'none' ? 'selected' : '' }}>Без категории</option>
                     @foreach($categories as $category)
-                        <option
-                            value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
+                        <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
                             {{ $category->name }}
                         </option>
                     @endforeach
@@ -34,19 +34,7 @@
             <p>Продукты не найдены.</p>
         @else
             @foreach ($products as $product)
-                <div class="product-card">
-                    <h2>{{ $product->name }}</h2>
-                    <p>{{ $product->description }}</p>
-                    <p>Цена: {{ $product->price }}</p>
-                    <p>
-                        Категория:
-                        @if($product->category)
-                            {{ $product->category->name }}
-                        @else
-                            <em>Категория не указана</em>
-                        @endif
-                    </p>
-                </div>
+                <x-productCard :product="$product"/>
             @endforeach
         @endif
     </div>
@@ -54,6 +42,4 @@
     <div style="margin: auto 0 0 0" class="pagination-links">
         {{ $products->appends(request()->query())->links() }}
     </div>
-
 @endsection
-

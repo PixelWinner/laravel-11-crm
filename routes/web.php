@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
@@ -16,13 +17,20 @@ Route::middleware('auth')->group(function () {
         return redirect('/');
     })->name('logout');
 
-    Route::get('/users', [UserController::class, 'index'])->name('getUsers');
+    Route::get('/products', [ProductController::class, 'index'])->name('products');
+});
 
-    Route::view('/products/create', 'createProduct')->name('createProductPage');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/users', [UserController::class, 'index'])->name('users');
 
-    Route::post('/products', [ProductController::class, 'createProduct'])->name('createProduct');
-
-    Route::get('/products', [ProductController::class, 'getProducts'])->name('products');
+    Route::view('/products/store', 'products.store')->name('storeProductPage');
+    Route::post('/products', [ProductController::class, 'store'])->name('storeProduct');
+    Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('editProduct');
+    Route::put('/products/{product}', [ProductController::class, 'update'])->name('updateProduct');
+    Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name('destroyProduct');
+    Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
+    Route::post('/categories', [CategoryController::class, 'store'])->name('storeCategory');
+    Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('destroyCategory');
 });
 
 Route::middleware('guest')->group(function () {

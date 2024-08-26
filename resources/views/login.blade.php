@@ -5,7 +5,7 @@
         <h1>Вход</h1>
         <form class="paper-form" action="{{ route('login') }}" method="POST">
             @csrf
-            <div>
+            <div class="form-group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" value="{{ old('email') }}" required>
                 @if ($errors->has('email'))
@@ -14,7 +14,8 @@
                     </div>
                 @endif
             </div>
-            <div>
+
+            <div class="form-group">
                 <label for="password">Пароль:</label>
                 <input type="password" id="password" name="password" required>
                 @if ($errors->has('password'))

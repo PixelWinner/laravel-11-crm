@@ -4,7 +4,7 @@
     <div class="container">
         <h1>Создание нового продукта</h1>
 
-        <form class="paper-form" action="{{ route('createProduct') }}" method="POST">
+        <form class="paper-form" action="{{ route('storeProduct') }}" method="POST">
             @csrf
 
             <div class="form-group">
@@ -57,7 +57,7 @@
                 <select class="form-control @error('category_id') is-invalid @enderror" id="category_id"
                         name="category_id">
                     <option value="">Выберите категорию</option>
-                    <!-- Пример статического вывода категорий. В реальном проекте лучше динамически загружать категории -->
+
                     @foreach(\App\Models\Category::all() as $category)
                         <option
                             value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>{{ $category->name }}</option>

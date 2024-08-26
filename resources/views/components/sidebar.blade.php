@@ -6,10 +6,12 @@
             <li><a href="{{ route('home') }}">Главная</a></li>
 
             @hasrole('admin')
-            <li><a href="{{ route('getUsers') }}">Пользователи</a></li>
+            <li><a href="{{ route('users') }}">Пользователи</a></li>
 
 
-            <li><a href="{{ route('createProductPage') }}">Добавить товар</a></li>
+            <li><a href="{{ route('storeProductPage') }}">Добавить товар</a></li>
+
+            <li><a href="{{ route('categories') }}">Категории</a></li>
             @endhasrole
 
             <li><a href="{{ route('products') }}">Продукты</a></li>
