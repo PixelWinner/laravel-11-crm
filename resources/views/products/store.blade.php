@@ -70,11 +70,5 @@
 
             <button type="submit" class="btn btn-primary">Создать продукт</button>
         </form>
-
-        @if (session('success'))
-            <div class="alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
     </div>
 @endsection

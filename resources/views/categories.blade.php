@@ -5,12 +5,6 @@
     <div class="container">
         <h1>Категории</h1>
 
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
         <form class="paper-form" action="{{ route('storeCategory') }}" method="POST">
             @csrf
             <label for="name">Название категории</label>

@@ -3,7 +3,7 @@
 @if ($users->isEmpty())
     <p>Нет доступных пользователей.</p>
 @else
-    <table class="users-table">
+    <table class="paper-table">
         <thead>
         <tr>
             <th>ID</th>

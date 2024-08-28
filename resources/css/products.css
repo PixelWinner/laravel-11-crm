@@ -29,13 +29,25 @@
 }
 
 .product-card {
-    width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 320px;
     overflow: auto;
     background-color: #f9f9f9;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
+}
+
+.cart-actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
 }
 
 .product-card h2 {
@@ -45,6 +57,5 @@
 }
 
 .product-card p {
-    margin-bottom: 10px;
     color: #666;
 }

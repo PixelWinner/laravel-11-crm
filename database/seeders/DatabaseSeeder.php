@@ -15,15 +15,9 @@ class DatabaseSeeder extends Seeder
 
     public function run(): void
     {
-//        TODO подумать над разрешениями
-//        Permission::create(['name' => 'manage products']);
-//        Permission::create(['name' => 'view orders']);
-//        Permission::create(['name' => 'place orders']);
-//        $adminRole->givePermissionTo(['manage products', 'view orders', 'place orders']);
-
-        $adminRole = Role::create(['name' => User::ADMIN]);
-        $sellerRole = Role::create(['name' => User::SELLER]);
-        $clientRole = Role::create(['name' => User::CLIENT]);
+        Role::create(['name' => User::ADMIN]);
+        Role::create(['name' => User::SELLER]);
+        Role::create(['name' => User::CLIENT]);
 
 
         $admin = User::factory()->create([

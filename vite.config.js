@@ -11,7 +11,7 @@ export default defineConfig({
     },
     plugins: [
         laravel({
-            input: ['resources/css/*.css', 'resources/js/app.js'],
+            input: ['resources/css/*.css', 'resources/js/app.js', 'resources/js/toaster.js'],
             refresh: true,
         }),
     ],

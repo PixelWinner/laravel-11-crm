@@ -4,12 +4,6 @@
     <div class="container">
         <h1>Редактирование продукта</h1>
 
-        @if (session('success'))
-            <div class="alert alert-success">
-                {{ session('success') }}
-            </div>
-        @endif
-
         <form class="paper-form" action="{{ route('updateProduct', $product) }}" method="POST">
             @csrf
             @method('PUT')

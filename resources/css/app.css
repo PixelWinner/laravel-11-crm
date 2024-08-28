@@ -51,29 +51,29 @@ h1 {
     text-align: center;
 }
 
-.users-table {
+.paper-table {
     width: 100%;
     border-collapse: collapse;
 }
 
-.users-table th, .users-table td {
+.paper-table th, .paper-table td {
     padding: 10px;
     border: 1px solid #ccc;
     text-align: left;
 }
 
-.users-table th {
+.paper-table th {
     background-color: #f4f4f4;
     font-weight: bold;
 }
 
-.users-table tr:nth-child(even) {
+.paper-table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
 .user-actions {
     display: flex;
-    gap: 16px;
+    gap: 8px;
     flex-wrap: nowrap;
     align-items: center;
 }

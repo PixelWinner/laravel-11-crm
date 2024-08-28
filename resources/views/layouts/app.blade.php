@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{ config('app.name', 'Laravel') }}</title>
-    @vite(['resources/css/app.css', 'resources/css/pagination.css', 'resources/css/form.css', 'resources/css/alert.css', 'resources/css/reset.css'])
+    @vite(['resources/css/app.css', 'resources/css/pagination.css', 'resources/css/form.css', 'resources/css/reset.css', 'resources/css/toaster.css', 'resources/js/toaster.js'])
 </head>
 <body>
 
@@ -30,6 +30,17 @@
         @yield('content')
     </div>
 </main>
+
+<div id="toast-container" class="toast-container"></div>
+
+<script>
+    window.Laravel = {
+        toast: {
+            success: "{{ session('success') }}",
+            error: "{{ session('error') }}"
+        }
+    };
+</script>
 
 </body>
 </html>
