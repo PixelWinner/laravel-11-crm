@@ -45,6 +45,10 @@ class ProductController extends Controller
             $query->where('price', '<=', $request->max_price);
         }
 
+        if ($request->filled('name')) {
+            $query->where('name', 'like', '%' . $request->name . '%');
+        }
+
         $products = $query->paginate(10);
 
         return view('products.index', compact('products', 'categories'));

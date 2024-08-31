@@ -19,11 +19,21 @@ class OrderController extends Controller
         return view('orders.index', compact('orders'));
     }
 
-    public function allOrders()
+    public function allOrders(Request $request)
     {
-        $orders = Order::with(['orderItems.product' => function($query) {
-            $query->withTrashed();
-        }, 'user'])->paginate(10);
+        $query = Order::with(['orderItems.product', 'user']);
+
+        if ($request->filled('user_email')) {
+            $query->whereHas('user', function ($q) use ($request) {
+                $q->where('email', 'like', '%' . $request->user_email . '%');
+            });
+        }
+
+        if ($request->filled('status')) {
+            $query->where('status', $request->status);
+        }
+
+        $orders = $query->paginate(10)->appends($request->query());
 
         return view('orders.all', compact('orders'));
     }

@@ -1,8 +1,32 @@
+@vite(['resources/css/products.css'])
 @extends('layouts.app')
 
 @section('content')
     <div class="container">
         <h1>Все заказы пользователей</h1>
+
+        <form action="{{ route('allOrders') }}" method="GET">
+            <div class="filter-section">
+                <div class="form-group">
+                    <label for="user_email">Почта пользователя:</label>
+                    <input type="text" name="user_email" id="user_email" value="{{ request('user_email') }}">
+                </div>
+
+                <div class="form-group">
+                    <label for="status">Статус заказа:</label>
+                    <select name="status" id="status">
+                        <option value="">Все статусы</option>
+                        @foreach(App\Models\Order::statuses() as $key => $status)
+                            <option value="{{ $key }}" {{ request('status') == $key ? 'selected' : '' }}>
+                                {{ $status }}
+                            </option>
+                        @endforeach
+                    </select>
+                </div>
+
+                <button type="submit">Фильтровать</button>
+            </div>
+        </form>
 
         @if ($orders->isEmpty())
             <p>Нет доступных заказов.</p>
@@ -27,13 +51,20 @@
                         <td>
                             <ul>
                                 @foreach ($order->orderItems as $item)
-                                    <li>{{ $item->product->name }} ({{ $item->quantity }} шт.)</li>
+                                    <li>
+                                        @if ($item->product)
+                                            {{ $item->product->name }} ({{ $item->quantity }} шт.)
+                                        @else
+                                            <em>Продукт удалён</em> ({{ $item->quantity }} шт.)
+                                        @endif
+                                    </li>
                                 @endforeach
                             </ul>
                         </td>
                         <td>{{ $order->total }}</td>
                         <td>
-                            <form class="user-actions" style="flex-direction: column" action="{{ route('updateOrderStatus', $order->id) }}" method="POST">
+                            <form class="user-actions" style="flex-direction: column"
+                                  action="{{ route('updateOrderStatus', $order->id) }}" method="POST">
                                 @csrf
                                 <select name="status" id="status">
                                     @foreach(App\Models\Order::statuses() as $key => $status)
@@ -51,7 +82,7 @@
             </table>
 
             <div class="pagination-links">
-                {{ $orders->links() }}
+                {{ $orders->appends(request()->query())->links() }}
             </div>
         @endif
     </div>
