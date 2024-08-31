@@ -16,6 +16,8 @@
 
             @hasanyrole('admin|seller')
             <li><a href="{{ route('allOrders') }}">Все заказы</a></li>
+
+            <li><a href="{{ route('statistics') }}">Статистика</a></li>
             @endhasanyrole
 
             <li><a href="{{ route('products') }}">Продукты</a></li>

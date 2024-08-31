@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StatisticsController;
 
 Route::middleware('auth')->group(function () {
     Route::view('/', 'home')->name('home');
@@ -30,6 +31,8 @@ Route::middleware('auth')->group(function () {
 Route::middleware(['auth', 'role:admin|seller'])->group(function () {
     Route::get('/admin/orders', [OrderController::class, 'allOrders'])->name('allOrders');
     Route::post('/orders/{order}/status', [OrderController::class, 'updateStatus'])->name('updateOrderStatus');
+    Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics');
+
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
